@@ -1,5 +1,51 @@
-.card__wrapper{
-    border: 1px solid black;
-    height: 15rem;
+@import "../_variable.scss";
+.card__wrapper {
+    width: 24%;
+    height: $product-card-h;
+    margin: 15px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
+    overflow: hidden;
+    position:  relative;
+    @media (max-width: 1000px) {
+        width: 46%;
+    }
+    @media (max-width: 750px) {
+        width: 100%;
+    }
 
+    &:hover {
+        box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+        transform: translate(0px, -8px);
+        transition: 0.6s;
+    }
+    img {
+        height: 200px;
+        padding: 1rem;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+    }
+    .card__info {
+        padding: 2px 16px;
+    }
+    button {
+        border: none;
+        outline: 0;
+        height: 50px;
+        padding: 12px;
+        color: white;
+        background-color: #000;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        position: absolute;
+        top: $product-card-h - 50px;
+        right: 24% * 0.01;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
 }
