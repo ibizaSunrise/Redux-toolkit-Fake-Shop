@@ -4,7 +4,7 @@ import { showAllProducts } from '../store/slice'
 import axios from "axios"
 import ProductCard from './ProductCard'
 import '../scss/blocks/productListing.scss'
-import {addToBasket} from '../store/slice.js'
+import { addToBasket, addToLSLikes } from '../store/slice.js'
 
 
 export default function ProductListing() {
@@ -23,21 +23,24 @@ export default function ProductListing() {
     console.log(products)
 
 
-    const handler = (id) => dispatch(addToBasket(id))
+    const AddToCart = (id) => dispatch(addToBasket(id))
+    const AddToLike = (id) => dispatch(addToLSLikes(id))
 
     return (
-        <div className = "products__container">
+        <div className="products__container">
             {products.map(product => (
 
                 <ProductCard
+                    key={product.id}
                     id={product.id}
                     src={product.image}
                     category={product.category}
                     desc={product.description}
                     title={product.title}
                     price={product.price}
-                    handler = {handler}
-                    message = "Add to Cart"
+                    handler_1={AddToCart}
+                    handler_2={AddToLike}
+                    message="Add to Cart"
 
                 />
             ))}

@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import ProductCard from '../components/ProductCard';
 import '../scss/blocks/productListing.scss'
 
 export default function Cart() {
-    const dispatch = useDispatch();
+   
     const cart = useSelector(state => state.toolkit.basket);
 
     console.log(cart)
