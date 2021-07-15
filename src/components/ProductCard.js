@@ -2,7 +2,8 @@ import React from 'react'
 import '../scss/blocks/productCard.scss'
 
 
-export default function ProductCard({id, src, category, title, desc, price}) {
+export default function ProductCard({id, src, category, title, desc, price, handler, message}) {
+
   
     return (
         <div className = "card__wrapper" key = {id}>
@@ -11,7 +12,7 @@ export default function ProductCard({id, src, category, title, desc, price}) {
                 <p>{category}</p>
                 <h4><b>{title}</b></h4>
                 <p>${price}</p>
-                <p><button>Add to Cart</button></p>
+                <p><button onClick = {() =>handler(id)}>{message}</button></p>
             </div>
       
         </div>

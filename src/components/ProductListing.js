@@ -4,6 +4,8 @@ import { showAllProducts } from '../store/slice'
 import axios from "axios"
 import ProductCard from './ProductCard'
 import '../scss/blocks/productListing.scss'
+import {addToBasket} from '../store/slice.js'
+
 
 export default function ProductListing() {
     const products = useSelector(state => state.toolkit.products)
@@ -19,6 +21,10 @@ export default function ProductListing() {
         fetchProducts()
     }, [])
     console.log(products)
+
+
+    const handler = (id) => dispatch(addToBasket(id))
+
     return (
         <div className = "products__container">
             {products.map(product => (
@@ -30,6 +36,8 @@ export default function ProductListing() {
                     desc={product.description}
                     title={product.title}
                     price={product.price}
+                    handler = {handler}
+                    message = "Add to Cart"
 
                 />
             ))}
