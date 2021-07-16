@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 export default function Header() {
     const basketArr = useSelector(state => state.toolkit.basket)
     const likesArr = useSelector(state => state.toolkit.likes)
-    console.log(likesArr)
+   
     return (
         <div className="header__wrapper">
 

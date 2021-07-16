@@ -27,13 +27,15 @@ export default function ProductListing() {
 
     //lokalStorage
     useEffect(() => {
+        localStorage.setItem('basket', JSON.stringify(basket))
+    }, [basket])
+    
+    useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('basket'))
         dispatch(saveBasketToLS(saved))
     }, [])
 
-    useEffect(() => {
-        localStorage.setItem('basket', JSON.stringify(basket))
-    }, [basket])
+  
 
     //handlers click props
     const AddToCart = (id) => dispatch(addToBasket(id))

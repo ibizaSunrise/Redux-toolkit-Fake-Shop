@@ -26,8 +26,12 @@
         position: absolute;
         left: 85%;
         top: 2%;
-        color: red;
+        color: rgb(226, 124, 116);;
         cursor: pointer;
+        &:hover{
+            color:red;
+        }
+
     }
     img {
         height: 200px;

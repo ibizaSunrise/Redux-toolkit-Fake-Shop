@@ -1,23 +1,21 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import ProductCard from '../components/ProductCard';
-
+import {removeProductFromBasket} from '../store/slice.js'
 import '../scss/blocks/productListing.scss'
 
 export default function Cart() {
 
-    const cart = useSelector(state => state.toolkit.basket);
-    // const dispatch = useDispatch()
+    const basket = useSelector(state => state.toolkit.basket);
+    const dispatch = useDispatch()
 
-    console.log(cart)
-
-    
-
-
+   function removeProduct(id){
+       dispatch(removeProductFromBasket(id))
+   }
     return (
         <div className="products__container">
             {
-                cart.map(product => (
+                basket.map(product => (
                     <ProductCard
                         key={product.id}
                         id={product.id}
@@ -26,7 +24,7 @@ export default function Cart() {
                         desc={product.description}
                         title={product.title}
                         price={product.price}
-                        // handler={handler}
+                        handler_1={removeProduct}
                         message="Delete"
 
                     />

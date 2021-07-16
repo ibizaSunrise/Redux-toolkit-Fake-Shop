@@ -15,10 +15,17 @@ const toolkitSlice = createSlice({
         addToBasket(state, action) {
             let product = state.products.filter((el) => el.id === action.payload);
             [product] = product;
-            state.basket.push(product);
+            // state.basket.push(product);
+
+            if(state.basket.length === 0)
+            state.basket.push(product)
+            if(product && state.basket.filter(el => el.id === product.id).length === 0 )state.basket.push(product)
         },
         saveBasketToLS(state, action){
             state.basket = action.payload
+        },
+        removeProductFromBasket(state, action){
+           state.basket = state.basket.filter(el => el.id !== action.payload)
         },
         addToLSLikes(state, action) {
             let like = state.products.filter((el) => el.id === action.payload);
@@ -33,4 +40,4 @@ const toolkitSlice = createSlice({
 })
 
 export default toolkitSlice.reducer;
-export const { showAllProducts, addToBasket, addToLSLikes, saveBasketToLS } = toolkitSlice.actions;
+export const { showAllProducts, addToBasket, addToLSLikes, saveBasketToLS, removeProductFromBasket } = toolkitSlice.actions;
