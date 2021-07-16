@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const toolkitSlice = createSlice({
     name: 'products',
     initialState: {
@@ -16,6 +17,9 @@ const toolkitSlice = createSlice({
             [product] = product;
             state.basket.push(product);
         },
+        saveBasketToLS(state, action){
+            state.basket = action.payload
+        },
         addToLSLikes(state, action) {
             let like = state.products.filter((el) => el.id === action.payload);
             [like] = like;
@@ -25,9 +29,8 @@ const toolkitSlice = createSlice({
           
         }
 
-
     }
 })
 
 export default toolkitSlice.reducer;
-export const { showAllProducts, addToBasket, addToLSLikes } = toolkitSlice.actions;
+export const { showAllProducts, addToBasket, addToLSLikes, saveBasketToLS } = toolkitSlice.actions;

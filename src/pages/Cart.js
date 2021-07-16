@@ -1,19 +1,25 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import ProductCard from '../components/ProductCard';
+
 import '../scss/blocks/productListing.scss'
 
 export default function Cart() {
-   
+
     const cart = useSelector(state => state.toolkit.basket);
+    // const dispatch = useDispatch()
 
     console.log(cart)
+
+    
+
+
     return (
-        <div className = "products__container">
+        <div className="products__container">
             {
                 cart.map(product => (
                     <ProductCard
-                        key = {product.id}
+                        key={product.id}
                         id={product.id}
                         src={product.image}
                         category={product.category}
@@ -21,7 +27,7 @@ export default function Cart() {
                         title={product.title}
                         price={product.price}
                         // handler={handler}
-                        message = "Delete"
+                        message="Delete"
 
                     />
                 )
