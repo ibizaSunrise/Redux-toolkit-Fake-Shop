@@ -1,5 +1,5 @@
 import React from 'react'
-import '../scss/blocks/Header.scss'
+import '../scss/blocks/header.scss'
 import {Link} from "react-router-dom";
 import { useSelector } from 'react-redux'
 
