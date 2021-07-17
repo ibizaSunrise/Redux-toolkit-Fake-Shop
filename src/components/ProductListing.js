@@ -26,6 +26,13 @@ export default function ProductListing() {
         fetchProducts()
     }, [])
 
+    
+  
+
+    //handlers click props
+    const AddToCart = (id) => dispatch(addToBasket(id))
+    const AddToLike = (id) => dispatch(addToLikes(id))
+
     //lokalStorage
 
   
@@ -36,11 +43,6 @@ export default function ProductListing() {
     useEffect(() => {
         localStorage.setItem('basket', JSON.stringify(basket))
     }, [basket])
-  
-
-    //handlers click props
-    const AddToCart = (id) => dispatch(addToBasket(id))
-    const AddToLike = (id) => dispatch(addToLikes(id))
 
     return (
         <div className="products__container">

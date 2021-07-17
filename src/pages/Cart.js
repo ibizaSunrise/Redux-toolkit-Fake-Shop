@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CartProduct from '../components/CartProduct';
 import { removeProductFromBasket, saveBasketToLS } from '../store/slice.js'
@@ -11,14 +11,20 @@ export default function Cart() {
 
     const basket = useSelector(state => state.toolkit.basket);
     const dispatch = useDispatch()
-    dispatch(saveBasketToLS(basket)) 
+
+    //handler
     function removeProduct(id) {
-        dispatch(removeProductFromBasket(id)) 
-        
+        dispatch(removeProductFromBasket(id))
     }
-    
-    
-    
+    //LS
+    useEffect(() => {
+        const saved = JSON.parse(localStorage.getItem('basket'))
+        dispatch(saveBasketToLS(saved))
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('basket', JSON.stringify(basket))
+    }, [basket])
+
     return (
         <>
             <div className="cart">
@@ -34,7 +40,6 @@ export default function Cart() {
                             price={product.price}
                             handler_1={removeProduct}
                             message="Delete"
-
                         />
                     )
 
