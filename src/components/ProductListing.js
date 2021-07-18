@@ -4,7 +4,7 @@ import { showAllProducts } from '../store/slice'
 import axios from "axios"
 import ProductCard from './ProductCard'
 import '../scss/blocks/productListing.scss'
-import { addToBasket, addToLikes, saveBasketToLS } from '../store/slice.js'
+import { addToBasket, addToLikes, saveBasketToLS, removeToLikes, saveLikesToLS } from '../store/slice.js'
 
 //___________
 
@@ -32,10 +32,8 @@ export default function ProductListing() {
     //handlers click props
     const AddToCart = (id) => dispatch(addToBasket(id))
     const AddToLike = (id) => dispatch(addToLikes(id))
-
+    
     //lokalStorage
-
-  
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('basket'))
         dispatch(saveBasketToLS(saved))
@@ -43,6 +41,14 @@ export default function ProductListing() {
     useEffect(() => {
         localStorage.setItem('basket', JSON.stringify(basket))
     }, [basket])
+
+    useEffect(() => {
+        const saved = JSON.parse(localStorage.getItem('likes'))
+        dispatch(saveLikesToLS(saved))
+    }, [])
+    useEffect(() => {
+        localStorage.setItem('likes', JSON.stringify(likes))
+    }, [likes])
 
     return (
         <div className="products__container">

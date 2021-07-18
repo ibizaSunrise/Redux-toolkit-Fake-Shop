@@ -1,10 +1,10 @@
 import React from 'react'
 import "../scss/blocks/cartCalculate.scss"
-// import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 export default function CartCalculate() {
 
-    // const basket = useSelector(state => state.toolkit.basket);
+    
     // const dispatch = useDispatch()
     return (
         <div className= "cart-calculate__wrapper">

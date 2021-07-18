@@ -12,30 +12,47 @@ const toolkitSlice = createSlice({
         showAllProducts(state, action) {
             state.products = action.payload
         },
+        //Basket
         addToBasket(state, action) {
             let product = state.products.filter((el) => el.id === action.payload);
             [product] = product;
-            if(state.basket.length === 0)
-            state.basket.push(product)
-            if(product && state.basket.filter(el => el.id === product.id).length === 0 )state.basket.push(product)
+            if (state.basket.length === 0)
+                state.basket.push(product)
+            if (product && state.basket.filter(el => el.id === product.id).length === 0) state.basket.push(product)
         },
-        saveBasketToLS(state, action){
+        saveBasketToLS(state, action) {
             state.basket = action.payload
         },
-        removeProductFromBasket(state, action){
-           state.basket = state.basket.filter(el => el.id !== action.payload)
+        removeProductFromBasket(state, action) {
+            state.basket = state.basket.filter(el => el.id !== action.payload)
+        },
+
+        //Likes
+        saveLikesToLS(state, action) {
+            state.likes = action.payload
         },
         addToLikes(state, action) {
             let like = state.products.filter((el) => el.id === action.payload);
             [like] = like;
-            if(state.likes.length === 0)
-            state.likes.push(like)
-            if(like && state.likes.filter(el => el.id === like.id).length === 0)state.likes.push(like)
-          
-        }
+            if (state.likes.length === 0)
+                state.likes.push(like)
+            if (like && state.likes.filter(el => el.id === like.id).length === 0) state.likes.push(like)
 
+        },
+        removeToLikes(state, action) {
+            state.likes = state.likes.filter(el => el.id !== action.payload)
+        }
     }
 })
 
 export default toolkitSlice.reducer;
-export const { showAllProducts, addToBasket, addToLikes, saveBasketToLS, removeProductFromBasket } = toolkitSlice.actions;
+export const {
+    showAllProducts,
+    addToBasket,
+    addToLikes,
+    removeToLikes,
+    saveBasketToLS,
+    saveLikesToLS,
+    removeProductFromBasket,
+
+} = toolkitSlice.actions;
