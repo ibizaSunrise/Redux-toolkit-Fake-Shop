@@ -7,10 +7,18 @@ const toolkitSlice = createSlice({
         products: [],
         basket: [],
         likes: [],
+        product: {}
     },
     reducers: {
         showAllProducts(state, action) {
             state.products = action.payload
+        },
+        //product
+        getProductById(state, action){
+            state.product = action.payload;
+        },
+        remveSelectedProduct(state, action){
+            state.product = {}
         },
         //Basket
         addToBasket(state, action) {
@@ -54,5 +62,7 @@ export const {
     saveBasketToLS,
     saveLikesToLS,
     removeProductFromBasket,
+    getProductById,
+    remveSelectedProduct,
 
 } = toolkitSlice.actions;

@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Search from './pages/Search.js'
 import Cart from './pages/Cart.js'
 import Like from './pages/Like.js'
+import ProductDitail from './pages/ProductDitail.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +23,7 @@ function App() {
           <Route path="/search" component={Search} />
           <Route path="/like" component={Like} />
           <Route path="/cart" component={Cart} />
+          <Route path = "/product/:productID" exact component={ProductDitail}/>
         </Switch>
       </Router>
     </>
