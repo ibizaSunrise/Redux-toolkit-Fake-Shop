@@ -1,0 +1,28 @@
+@import "../_variable.scss";
+
+.product__container {
+    width: 90%;
+    margin: $header-h + 2rem auto;
+    display: flex;
+    @media screen and(max-width: 760px) {
+        display: block;
+    }
+
+    .product-img__wrapper {
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 70%;
+        }
+    }
+    .product-info__wrapper{
+        padding: 2rem;
+
+        .arrow{
+            font-size: 3rem;
+        }
+    }
+}
