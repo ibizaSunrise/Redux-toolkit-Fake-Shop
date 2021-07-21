@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CartProduct from '../components/CartProduct';
-import { removeProductFromBasket, saveBasketToLS } from '../store/slice.js'
+import { removeProductFromBasket, saveBasketToLS, changeAmount, getSum, addToBasket } from '../store/slice.js'
 import '../scss/blocks/cart.scss'
 import CartCalculate from '../components/CartCalculate'
 //_____________
@@ -12,13 +12,32 @@ export default function Cart() {
 
     const basket = useSelector(state => state.toolkit.basket);
     const dispatch = useDispatch()
-    const [sum, setSum] = useState(0)
-console.log(sum)
-    //handler
+    const [value, setValue] = useState(1)
+
+    console.log(basket)
+    const sum = useSelector(state => state.toolkit.sum);
+    console.log(sum)
+
+    useEffect(() => {
+        dispatch(getSum())
+    }, [removeProductFromBasket, saveBasketToLS, changeAmount, getSum, basket, addToBasket])// ???
+
     function removeProduct(id) {
         dispatch(removeProductFromBasket(id))
+
     }
-  
+
+    function handlerChange(v, id) {
+        console.log(v)
+        console.log(id)
+        setValue(v)
+        dispatch(changeAmount({
+            id: id,
+            amount: v
+        }))
+
+    }
+
 
     //LS
     useEffect(() => {
@@ -37,16 +56,17 @@ console.log(sum)
                 {
                     basket.map(product => (
                         <CartProduct
+                            amount = {product.amount}
+                            handler_2={handlerChange}
                             key={product.id}
                             id={product.id}
                             src={product.image}
                             category={product.category}
-                            desc={product.description}
                             title={product.title}
                             price={product.price}
                             handler_1={removeProduct}
                             message="Delete"
-                            handler_2={setSum}
+
                         />
                     )
 
@@ -54,7 +74,7 @@ console.log(sum)
                 }
 
             </div>
-            <CartCalculate />
+            <CartCalculate sum={sum} />
 
         </>
     )

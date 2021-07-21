@@ -4,7 +4,7 @@ import { showAllProducts } from '../store/slice'
 import axios from "axios"
 import ProductCard from './ProductCard'
 import '../scss/blocks/productListing.scss'
-import { addToBasket, addToLikes, saveBasketToLS, removeToLikes, saveLikesToLS } from '../store/slice.js'
+import { addToBasket, addToLikes, saveBasketToLS, removeToLikes, saveLikesToLS, getSum  } from '../store/slice.js'
 
 //___________
 
@@ -14,6 +14,8 @@ export default function ProductListing() {
     const { products, basket, likes } = useSelector(state => state.toolkit)
     const dispatch = useDispatch()
 
+  
+   
 
     // uploading products
     const fetchProducts = async () => {
@@ -24,14 +26,21 @@ export default function ProductListing() {
     }
     useEffect(() => {
         fetchProducts()
+       
     }, [])
 
-    
-  
+
 
     //handlers click props
-    const AddToCart = (id) => dispatch(addToBasket(id))
-    const AddToLike = (id) => dispatch(addToLikes(id))
+    const AddToCart = (id) =>{
+        dispatch(addToBasket(id))
+       
+    }
+    const AddToLike = (id) =>{
+        
+        dispatch(addToLikes(id))
+        
+    }
     
     //lokalStorage
     useEffect(() => {

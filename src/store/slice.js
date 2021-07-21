@@ -7,7 +7,8 @@ const toolkitSlice = createSlice({
         products: [],
         basket: [],
         likes: [],
-        product: {}
+        product: {},
+        sum: ''
     },
     reducers: {
         showAllProducts(state, action) {
@@ -25,14 +26,23 @@ const toolkitSlice = createSlice({
             let product = state.products.filter((el) => el.id === action.payload);
             [product] = product;
             if (state.basket.length === 0)
-                state.basket.push(product)
-            if (product && state.basket.filter(el => el.id === product.id).length === 0) state.basket.push(product)
+                state.basket.push({...product,
+                amount: 1})
+            if (product && state.basket.filter(el => el.id === product.id).length === 0) state.basket.push({...product,
+                amount: 1})
+        },
+        
+        changeAmount(state, action) {
+            state.basket.map(el => el.id === action.payload.id ? el.amount = action.payload.amount : el)
         },
         saveBasketToLS(state, action) {
             state.basket = action.payload
         },
         removeProductFromBasket(state, action) {
             state.basket = state.basket.filter(el => el.id !== action.payload)
+        },
+        getSum(state){
+           state.sum = state.basket.reduce((accumulator, currentValue) => accumulator + (currentValue.price * currentValue.amount), 0)
         },
 
         //Likes
@@ -43,8 +53,14 @@ const toolkitSlice = createSlice({
             let like = state.products.filter((el) => el.id === action.payload);
             [like] = like;
             if (state.likes.length === 0)
-                state.likes.push(like)
-            if (like && state.likes.filter(el => el.id === like.id).length === 0) state.likes.push(like)
+                state.likes.push({
+                    ...like,
+                    marked: true
+                })
+            if (like && state.likes.filter(el => el.id === like.id).length === 0) state.likes.push({
+                ...like,
+                marked: true
+            })
 
         },
         removeToLikes(state, action) {
@@ -64,5 +80,7 @@ export const {
     removeProductFromBasket,
     getProductById,
     remveSelectedProduct,
+    changeAmount,
+    getSum
 
 } = toolkitSlice.actions;

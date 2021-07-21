@@ -7,7 +7,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: 0.4s;
     overflow: hidden;
-    position:  relative;
+    position: relative;
     @media (max-width: 1000px) {
         width: 46%;
     }
@@ -20,18 +20,17 @@
         transform: translate(0px, -8px);
         transition: 0.6s;
     }
-    .like{
+    .like {
         display: block;
         font-size: 2rem;
         position: absolute;
         left: 85%;
         top: 2%;
-        color: rgb(226, 124, 116);;
+        color: rgb(226, 124, 116);
         cursor: pointer;
-        &:hover{
-            color:red;
+        &:hover {
+            color: red;
         }
-
     }
     img {
         height: 200px;

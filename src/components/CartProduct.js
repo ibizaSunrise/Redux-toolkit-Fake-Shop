@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import '../scss/blocks/cartProduct.scss'
 
-export default function CartProduct({id, src, category, title, desc, price, handler_1, handler_2, message}) {
-    const [value, setValue] = useState(1)
+export default function CartProduct({id, src, category, title, price, handler_1, handler_2, message,  amount}) {
+    
 
     return (
         <div className = "cart-product__wrapper" key = {id}>
@@ -12,9 +12,9 @@ export default function CartProduct({id, src, category, title, desc, price, hand
             <div className="cart-product__info">
             <p>{category}</p>
                 <h4><b>{title}</b></h4>
-                <p>${price * value}</p>
+                <p>${price * amount}</p>
                 <p>Amount <select
-                value ={value} onChange = {e =>setValue(e.target.value)}>
+                value ={amount} onChange = {e =>handler_2(e.target.value, id)} >
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
