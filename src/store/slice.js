@@ -8,17 +8,17 @@ const toolkitSlice = createSlice({
         basket: [],
         likes: [],
         product: {},
-        sum: ''
+        sum: 0
     },
     reducers: {
         showAllProducts(state, action) {
             state.products = action.payload
         },
         //product
-        getProductById(state, action){
+        getProductById(state, action) {
             state.product = action.payload;
         },
-        remveSelectedProduct(state, action){
+        remveSelectedProduct(state, action) {
             state.product = {}
         },
         //Basket
@@ -26,12 +26,16 @@ const toolkitSlice = createSlice({
             let product = state.products.filter((el) => el.id === action.payload);
             [product] = product;
             if (state.basket.length === 0)
-                state.basket.push({...product,
-                amount: 1})
-            if (product && state.basket.filter(el => el.id === product.id).length === 0) state.basket.push({...product,
-                amount: 1})
+                state.basket.push({
+                    ...product,
+                    amount: 1
+                })
+            if (product && state.basket.filter(el => el.id === product.id).length === 0) state.basket.push({
+                ...product,
+                amount: 1
+            })
         },
-        
+
         changeAmount(state, action) {
             state.basket.map(el => el.id === action.payload.id ? el.amount = action.payload.amount : el)
         },
@@ -41,8 +45,8 @@ const toolkitSlice = createSlice({
         removeProductFromBasket(state, action) {
             state.basket = state.basket.filter(el => el.id !== action.payload)
         },
-        getSum(state){
-           state.sum = state.basket.reduce((accumulator, currentValue) => accumulator + (currentValue.price * currentValue.amount), 0)
+        getSum(state) {
+            state.sum = state.basket.reduce((accumulator, currentValue) => accumulator + (currentValue.price * currentValue.amount), 0)
         },
 
         //Likes

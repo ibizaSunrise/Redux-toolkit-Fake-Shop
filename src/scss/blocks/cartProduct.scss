@@ -1,22 +1,21 @@
 @import "../_variable.scss";
 
- .cart-product__wrapper{
-     display: flex;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-     margin-bottom: 2rem;
-     width: 100%;
+.cart-product__wrapper {
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    width: 100%;
 
-     .cart-product__img{
-         width: 40%;
+    .cart-product__img {
+        width: 40%;
 
-         img{
-             width: 70%;
-             padding: 2rem;
-        
-         }
-     }
+        img {
+            width: 70%;
+            padding: 2rem;
+        }
+    }
 
-     .cart-product__info{
-         padding: 2rem;
-     }
- }
+    .cart-product__info {
+        padding: 2rem;
+    }
+}

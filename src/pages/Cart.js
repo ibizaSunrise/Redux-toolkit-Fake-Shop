@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CartProduct from '../components/CartProduct';
-import { removeProductFromBasket, saveBasketToLS, changeAmount, getSum, addToBasket } from '../store/slice.js'
+import { removeProductFromBasket, saveBasketToLS, changeAmount, getSum } from '../store/slice.js'
 import '../scss/blocks/cart.scss'
 import CartCalculate from '../components/CartCalculate'
-//_____________
-
-
 
 export default function Cart() {
 
@@ -14,13 +11,11 @@ export default function Cart() {
     const dispatch = useDispatch()
     const [value, setValue] = useState(1)
 
-    console.log(basket)
     const sum = useSelector(state => state.toolkit.sum);
-    console.log(sum)
 
     useEffect(() => {
         dispatch(getSum())
-    }, [removeProductFromBasket, saveBasketToLS, changeAmount, getSum, basket, addToBasket])// ???
+    }, [basket])
 
     function removeProduct(id) {
         dispatch(removeProductFromBasket(id))
@@ -56,7 +51,7 @@ export default function Cart() {
                 {
                     basket.map(product => (
                         <CartProduct
-                            amount = {product.amount}
+                            amount={product.amount}
                             handler_2={handlerChange}
                             key={product.id}
                             id={product.id}
@@ -74,7 +69,7 @@ export default function Cart() {
                 }
 
             </div>
-            <CartCalculate sum={sum} />
+            <CartCalculate sum={sum.toFixed(2)} />
 
         </>
     )

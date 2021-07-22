@@ -1,0 +1,25 @@
+@import "../_variable.scss";
+
+.search__container {
+    width: 100%;
+    margin: $header-h + 1rem 0;
+
+    .bloc-tabs {
+        display: flex;
+        align-items: center;
+        .tabs {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            background-color: rgb(231, 238, 238);
+            height: 3rem;
+            border-top: 1px solid gray;
+            border-right: 1px solid black;
+            &.tabs-active {
+                background-color: white;
+                border-top: 3px solid rgb(146, 231, 19);
+            }
+        }
+    }
+}

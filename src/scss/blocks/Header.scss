@@ -1,25 +1,26 @@
 @import "../_variable.scss";
-.header__wrapper{
+.header__wrapper {
     height: $header-h;
     width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: $header-bg;
-    color: white;
+    color: whitesmoke;
     align-items: center;
     position: fixed;
     top: 0;
     z-index: 1000;
-    .header__logo{
+    .header__logo {
         font-size: 2rem;
         padding-left: 0.5rem;
     }
-    ul{
+
+    ul {
         display: flex;
         flex-direction: row;
         list-style: none;
-        
-        li{
+
+        li {
             padding-right: 2rem;
             font-size: 2rem;
         }

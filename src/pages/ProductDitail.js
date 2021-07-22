@@ -24,18 +24,18 @@ export default function ProductDitail() {
         }
     }, [productID]);
     return (
-        <div className = "product__container">
-            <div className = "product-img__wrapper">
-            <img src={product.image} alt="ecommerce" />
+        <div className="product__container">
+            <div className="product-img__wrapper">
+                <img src={product.image} alt="ecommerce" />
             </div>
             <div className="product-info__wrapper">
                 <h1>{product.title}</h1>
                 <p>{product.category}</p>
                 <p>{product.description}</p>
                 <p>${product.price}</p>
-                <Link to = "/"><p className = "arrow">&#8592;</p></Link>
+                <Link to="/"><p className="arrow">&#8592;</p></Link>
             </div>
-         
+
         </div>
     )
 }
